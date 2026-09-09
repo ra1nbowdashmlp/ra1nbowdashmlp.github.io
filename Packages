@@ -1,0 +1,10 @@
+Package: com.ra1nbowdash.mytweak
+Name: My First Tweak
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Awesome tweak for iOS
+Maintainer: ra1nbowdash
+Author: ra1nbowdash
+Section: Tweaks
+Filename: deb/AppSync Unified.deb
+Size: 51610
