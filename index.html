@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ra1nbowdash Repo</title>
+    
+    <!-- Favicon & Apple Touch Icon -->
+    <link rel="icon" type="image/png" href="CydiaIcon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
@@ -18,13 +23,20 @@
         .container {
             background: #1c1c1e;
             padding: 30px;
-            border-radius: 18px;
+            border-radius: 20px;
             text-align: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             max-width: 320px;
             width: 100%;
         }
-        h1 { margin-bottom: 8px; font-size: 24px; }
+        .repo-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        h1 { margin: 0 0 8px 0; font-size: 24px; }
         p { color: #8e8e93; font-size: 14px; margin-bottom: 24px; }
         .btn {
             display: block;
@@ -47,6 +59,9 @@
 <body>
 
 <div class="container">
+    <!-- Icon display on web page -->
+    <img src="CydiaIcon.png" alt="ra1nbowdash Repo Icon" class="repo-icon" onerror="this.style.display='none'">
+
     <h1>ra1nbowdash Repo</h1>
     <p>Choose your package manager to add this repository:</p>
 
