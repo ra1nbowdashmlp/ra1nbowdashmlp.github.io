@@ -1,1 +1,8 @@
-
+Origin: ra1nbowdash Repo
+Label: ra1nbowdash
+Suite: stable
+Version: 1.0
+Codename: ios
+Architectures: iphoneos-arm iphoneos-arm64 iphoneos-arm64e
+Components: main
+Description: Official iOS Tweak Repository by ra1nbowdash
