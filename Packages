@@ -1,10 +1,10 @@
-Package: com.ra1nbowdash.mytweak
-Name: My First Tweak
-Version: 1.0.0
+Package: com.linusyang.appsyncunified
+Name: AppSync Unified
+Version: 116.0
 Architecture: iphoneos-arm
-Description: Awesome tweak for iOS
+Description: Sync unapproved iOS apps
 Maintainer: ra1nbowdash
-Author: ra1nbowdash
+Author: Karen / Karen's Pineapple
 Section: Tweaks
 Filename: deb/AppSync Unified.deb
 Size: 51610
