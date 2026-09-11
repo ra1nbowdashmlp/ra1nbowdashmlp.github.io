@@ -5,7 +5,7 @@ Architecture: iphoneos-arm
 Maintainer: notfence
 Author: notfencce
 Section: Tweaks
-Filename: ./debs/me.jjolano.shadow_2.0.20_iphoneos-arm.deb
+Filename: ./deb/com.vlesscore.app_iphoneos-arm.deb
 Size: 1024000
 MD5sum: e4d909c290d0fb1ca068ffaddf22cbd0
 SHA256: 68b329da9893e34099c7d8ad5cb9c940...
