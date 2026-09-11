@@ -1,10 +1,12 @@
-Package: com.linusyang.appsyncunified
-Name: AppSync Unified
-Version: 116.0
+Package: me.jjolano.shadow
+Name: Shadow
+Version: 2.0.20
 Architecture: iphoneos-arm
-Description: Sync unapproved iOS apps
-Maintainer: ra1nbowdash
-Author: Karen / Karen's Pineapple
+Maintainer: jjolano
+Author: jjolano
 Section: Tweaks
-Filename: deb/AppSync Unified.deb
-Size: 51610
+Filename: ./debs/me.jjolano.shadow_2.0.20_iphoneos-arm.deb
+Size: 1024000
+MD5sum: e4d909c290d0fb1ca068ffaddf22cbd0
+SHA256: 68b329da9893e34099c7d8ad5cb9c940...
+Description: A lightweight jailbreak detection bypass.
