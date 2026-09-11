@@ -6,14 +6,13 @@
     <title>Ra1nbow Repo</title>
     <style>
         :root {
-            --bg-color: #0d0f12;
-            --card-bg: rgba(22, 27, 34, 0.9);
-            --accent-green: #00ff66;
-            --accent-cyan: #00e5ff;
-            --accent-tg: #229ED9;
+            --bg-color: #05080a;
+            --card-bg: #11161d;
+            --accent-green: #0dff75;
+            --accent-cyan: #3bcbfb;
             --text-main: #e6edf3;
-            --text-dim: #8b949e;
-            --border-color: rgba(0, 255, 102, 0.25);
+            --text-dim: #7d8590;
+            --border-color: rgba(13, 255, 117, 0.3);
         }
 
         * {
@@ -31,75 +30,74 @@
             justify-content: center;
             align-items: center;
             padding: 15px;
-            overflow-x: hidden;
-            perspective: 1000px;
-            background-image: 
-                radial-gradient(circle at 50% 0%, rgba(0, 255, 102, 0.12) 0%, transparent 75%),
-                linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85));
+            overflow: hidden;
+            position: relative;
         }
 
-        /* Карточка с анимацией открытия (всплытие) и 3D-трансформацией */
+        /* Канвас для эффекта снега и звездочек */
+        #fxCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+
         .container {
+            position: relative;
+            z-index: 2;
             max-width: 480px;
             width: 100%;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px 16px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 0 35px rgba(0, 255, 102, 0.1);
-            
-            /* Анимация при старте */
-            opacity: 0;
-            transform: translateY(30px) scale(0.95);
-            animation: siteAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+            border-radius: 20px;
+            padding: 24px 20px;
+            box-shadow: 0 0 30px rgba(13, 255, 117, 0.08);
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes siteAppear {
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
-        /* Иконка с эффектом покачивания и увеличением */
         .repo-icon {
-            width: 75px;
-            height: 75px;
-            border-radius: 18px;
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
             margin-bottom: 12px;
             border: 2px solid var(--accent-green);
-            box-shadow: 0 0 18px rgba(0, 255, 102, 0.4);
+            box-shadow: 0 0 20px rgba(13, 255, 117, 0.4);
             object-fit: cover;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .repo-icon:hover {
-            transform: scale(1.08) rotate(3deg);
-            box-shadow: 0 0 25px rgba(0, 255, 102, 0.7);
+            transform: scale(1.05);
         }
 
         .header h1 {
             font-size: 1.8rem;
             color: var(--accent-green);
-            text-shadow: 0 0 12px rgba(0, 255, 102, 0.6);
-            letter-spacing: 1.5px;
-            margin-bottom: 4px;
+            text-shadow: 0 0 10px rgba(13, 255, 117, 0.5);
+            letter-spacing: 2px;
+            margin-bottom: 6px;
         }
 
         .header p {
             color: var(--text-dim);
-            font-size: 0.8rem;
+            font-size: 0.82rem;
         }
 
         .devs-section {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         .section-title {
@@ -108,12 +106,13 @@
             letter-spacing: 1.2px;
             color: var(--accent-cyan);
             margin-bottom: 10px;
+            font-weight: bold;
         }
 
         .dev-cards {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 10px;
         }
 
         @media (max-width: 420px) {
@@ -122,38 +121,34 @@
             }
         }
 
-        /* Карточки разработчиков с реакцией на курсор */
         .dev-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 10px;
-            border-radius: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             gap: 10px;
             overflow: hidden;
-            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .dev-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(0, 255, 102, 0.4);
-            background: rgba(0, 255, 102, 0.05);
+            border-color: rgba(13, 255, 117, 0.3);
+            background: rgba(255, 255, 255, 0.04);
         }
 
         .dev-avatar-img {
-            width: 34px;
-            height: 34px;
-            min-width: 34px;
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
             border-radius: 50%;
             border: 1.5px solid var(--accent-green);
-            box-shadow: 0 0 6px rgba(0, 255, 102, 0.4);
             object-fit: cover;
         }
 
         .dev-avatar-img.cyan {
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 6px rgba(0, 229, 255, 0.4);
         }
 
         .dev-name {
@@ -169,33 +164,39 @@
             margin-bottom: 20px;
         }
 
-        /* Telegram кнопка: объемная тень + проваливание */
-        .btn-tg {
+        /* Стиль кнопок BookRa1n: глубокий градиент, скругленные углы и мягкое свечение */
+        .btn-style {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
             width: 100%;
-            padding: 12px;
-            background: rgba(34, 158, 217, 0.15);
-            border: 1px solid var(--accent-tg);
-            color: #53c7ff;
-            border-radius: 10px;
-            font-size: 0.9rem;
+            padding: 13px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            font-size: 0.88rem;
             font-weight: bold;
             text-decoration: none;
-            box-shadow: 0 4px 0 #125777, 0 0 15px rgba(34, 158, 217, 0.2);
-            transition: all 0.1s ease;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-tg:hover {
-            background: rgba(34, 158, 217, 0.25);
-            box-shadow: 0 4px 0 #125777, 0 0 25px rgba(34, 158, 217, 0.5);
+        .btn-style:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.2);
         }
 
-        .btn-tg:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 #125777, 0 0 8px rgba(34, 158, 217, 0.3);
+        .btn-style:active {
+            transform: translateY(1px) scale(0.99);
+        }
+
+        .btn-tg {
+            border-color: rgba(34, 158, 217, 0.5);
+            color: #53c7ff;
+            background: linear-gradient(180deg, rgba(34, 158, 217, 0.15) 0%, rgba(34, 158, 217, 0.03) 100%);
+            box-shadow: 0 0 12px rgba(34, 158, 217, 0.1);
         }
 
         .managers-section {
@@ -205,87 +206,47 @@
         .pm-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 10px;
         }
 
-        /* Кнопки менеджеров пакетов: проваливание + свечение цветными гранями */
-        .btn-pm {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 8px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: var(--text-main);
-            border-radius: 10px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 0 4px 0 rgba(255, 255, 255, 0.1);
-            transition: all 0.1s ease;
+        .btn-sileo {
+            border-color: rgba(0, 122, 255, 0.4);
+            color: #4da6ff;
+            background: linear-gradient(180deg, rgba(0, 122, 255, 0.12) 0%, rgba(0, 122, 255, 0.02) 100%);
         }
 
-        .btn-sileo { 
-            border-color: rgba(0, 122, 255, 0.4); 
-            color: #4da6ff; 
-            box-shadow: 0 4px 0 #004080;
-        }
-        .btn-sileo:hover {
-            box-shadow: 0 4px 0 #004080, 0 0 15px rgba(0, 122, 255, 0.4);
-        }
-        .btn-sileo:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 #004080;
+        .btn-zebra {
+            border-color: rgba(255, 149, 0, 0.4);
+            color: #ffb347;
+            background: linear-gradient(180deg, rgba(255, 149, 0, 0.12) 0%, rgba(255, 149, 0, 0.02) 100%);
         }
 
-        .btn-zebra { 
-            border-color: rgba(255, 149, 0, 0.4); 
-            color: #ffb347; 
-            box-shadow: 0 4px 0 #804b00;
-        }
-        .btn-zebra:hover {
-            box-shadow: 0 4px 0 #804b00, 0 0 15px rgba(255, 149, 0, 0.4);
-        }
-        .btn-zebra:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 #804b00;
-        }
-
-        .btn-cydia { 
-            border-color: rgba(255, 59, 48, 0.4); 
-            color: #ff6b6b; 
-            box-shadow: 0 4px 0 #801d18;
-        }
-        .btn-cydia:hover {
-            box-shadow: 0 4px 0 #801d18, 0 0 15px rgba(255, 59, 48, 0.4);
-        }
-        .btn-cydia:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 #801d18;
+        .btn-cydia {
+            border-color: rgba(255, 59, 48, 0.4);
+            color: #ff6b6b;
+            background: linear-gradient(180deg, rgba(255, 59, 48, 0.12) 0%, rgba(255, 59, 48, 0.02) 100%);
         }
 
         .btn-installer {
-            box-shadow: 0 4px 0 rgba(255, 255, 255, 0.15);
-        }
-        .btn-installer:hover {
-            box-shadow: 0 4px 0 rgba(255, 255, 255, 0.15), 0 0 15px rgba(255, 255, 255, 0.2);
-        }
-        .btn-installer:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #e6edf3;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
         }
 
         .footer {
-            margin-top: 15px;
+            margin-top: 18px;
             text-align: center;
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             color: var(--text-dim);
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
-<div class="container" id="card">
+<canvas id="fxCanvas"></canvas>
+
+<div class="container">
     <div class="header">
         <img src="CydiaIcon.png" alt="Ra1nbow Icon" class="repo-icon">
         <h1>RA1NBOW REPO</h1>
@@ -308,7 +269,7 @@
 
     <div class="tg-section">
         <div class="section-title">> Official Community</div>
-        <a href="https://t.me/iPhone_jailbreak_official" target="_blank" class="btn-tg">
+        <a href="https://t.me/iPhone_jailbreak_official" target="_blank" class="btn-style btn-tg">
             ✈ TELEGRAM CHANNEL
         </a>
     </div>
@@ -316,16 +277,16 @@
     <div class="managers-section">
         <div class="section-title">> Add Repository</div>
         <div class="pm-grid">
-            <a href="sileo://source/https://ra1nbowdashmlp.github.io/" class="btn-pm btn-sileo">
+            <a href="sileo://source/https://ra1nbowdashmlp.github.io/" class="btn-style btn-sileo">
                 + Sileo
             </a>
-            <a href="zbra://sources/add/https://ra1nbowdashmlp.github.io/" class="btn-pm btn-zebra">
+            <a href="zbra://sources/add/https://ra1nbowdashmlp.github.io/" class="btn-style btn-zebra">
                 + Zebra
             </a>
-            <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://ra1nbowdashmlp.github.io/" class="btn-pm btn-cydia">
+            <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://ra1nbowdashmlp.github.io/" class="btn-style btn-cydia">
                 + Cydia
             </a>
-            <a href="installer://add/https://ra1nbowdashmlp.github.io/" class="btn-pm btn-installer">
+            <a href="installer://add/https://ra1nbowdashmlp.github.io/" class="btn-style btn-installer">
                 + Installer
             </a>
         </div>
@@ -337,18 +298,86 @@
 </div>
 
 <script>
-    // 3D-наклон центрального блока вслед за курсором
-    const card = document.getElementById('card');
+    const canvas = document.getElementById('fxCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    // Настройки снега
+    const flakes = Array.from({ length: 65 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 2 + 0.5,
+        speed: Math.random() * 0.7 + 0.3,
+        wind: Math.random() * 0.4 - 0.2,
+        opacity: Math.random() * 0.5 + 0.2
+    }));
+
+    // Звездочки за мышкой
+    const stars = [];
 
     document.addEventListener('mousemove', (e) => {
-        const xAxis = (window.innerWidth / 2 - e.clientX) / 30;
-        const yAxis = (window.innerHeight / 2 - e.clientY) / 30;
-        card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        for (let i = 0; i < 2; i++) {
+            stars.push({
+                x: e.clientX + (Math.random() - 0.5) * 10,
+                y: e.clientY + (Math.random() - 0.5) * 10,
+                size: Math.random() * 3 + 1,
+                vx: (Math.random() - 0.5) * 1.5,
+                vy: (Math.random() - 0.5) * 1.5 - 0.5,
+                alpha: 1,
+                color: Math.random() > 0.5 ? '#0dff75' : '#3bcbfb'
+            });
+        }
     });
 
-    document.addEventListener('mouseleave', () => {
-        card.style.transform = 'rotateY(0deg) rotateX(0deg)';
-    });
+    function render() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Рисуем медленный снег
+        flakes.forEach(flake => {
+            ctx.beginPath();
+            ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
+            ctx.fill();
+
+            flake.y += flake.speed;
+            flake.x += flake.wind;
+
+            if (flake.y > height) {
+                flake.y = -5;
+                flake.x = Math.random() * width;
+            }
+        });
+
+        // Рисуем искры/звездочки курсора
+        for (let i = stars.length - 1; i >= 0; i--) {
+            const s = stars[i];
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+            ctx.fillStyle = s.color;
+            ctx.globalAlpha = s.alpha;
+            ctx.fill();
+            ctx.globalAlpha = 1;
+
+            s.x += s.vx;
+            s.y += s.vy;
+            s.alpha -= 0.025;
+
+            if (s.alpha <= 0) {
+                stars.splice(i, 1);
+            }
+        }
+
+        requestAnimationFrame(render);
+    }
+
+    render();
 </script>
 
 </body>
