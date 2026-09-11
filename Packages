@@ -1,9 +1,9 @@
-Package: me.jjolano.shadow
-Name: Vless-core
-Version: 2.0.20
+Package: com.vlesscore.app
+Name: vless-core
+Version: 0.6.0
 Architecture: iphoneos-arm
-Maintainer: jjolano
-Author: jjolano
+Maintainer: notfence
+Author: notfencce
 Section: Tweaks
 Filename: ./debs/me.jjolano.shadow_2.0.20_iphoneos-arm.deb
 Size: 1024000
