@@ -10,7 +10,7 @@
             --card-bg: rgba(22, 27, 34, 0.85);
             --accent-green: #00ff66;
             --accent-cyan: #00e5ff;
-            --accent-purple: #af52de;
+            --accent-tg: #229ED9;
             --text-main: #e6edf3;
             --text-dim: #8b949e;
             --border-color: rgba(0, 255, 102, 0.25);
@@ -73,7 +73,7 @@
         }
 
         .devs-section {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .section-title {
@@ -113,6 +113,36 @@
             background-color: var(--accent-green);
             border-radius: 50%;
             box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        /* Кнопка Telegram */
+        .tg-section {
+            margin-bottom: 25px;
+        }
+
+        .btn-tg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px;
+            background: rgba(34, 158, 217, 0.1);
+            border: 1px solid var(--accent-tg);
+            color: #53c7ff;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(34, 158, 217, 0.15);
+        }
+
+        .btn-tg:hover {
+            background: var(--accent-tg);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(34, 158, 217, 0.5);
+            transform: translateY(-2px);
         }
 
         /* Менеджеры пакетов */
@@ -199,6 +229,13 @@
                 <div class="dev-name">@Unnamed_200</div>
             </div>
         </div>
+    </div>
+
+    <div class="tg-section">
+        <div class="section-title">> Official Community</div>
+        <a href="https://t.me/iPhone_jailbreak_official" target="_blank" class="btn-tg">
+            ✈ TELEGRAM CHANNEL
+        </a>
     </div>
 
     <div class="managers-section">
