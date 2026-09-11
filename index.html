@@ -8,11 +8,11 @@
         :root {
             --bg-color: #05080a;
             --card-bg: #11161d;
-            --accent-green: #0dff75;
-            --accent-cyan: #3bcbfb;
-            --text-main: #e6edf3;
+            --accent-green: #00ff66;
+            --accent-cyan: #00e5ff;
+            --text-main: #ffffff;
             --text-dim: #7d8590;
-            --border-color: rgba(13, 255, 117, 0.3);
+            --border-color: rgba(0, 255, 102, 0.4);
         }
 
         * {
@@ -34,7 +34,6 @@
             position: relative;
         }
 
-        /* Канвас для эффекта снега и звездочек */
         #fxCanvas {
             position: fixed;
             top: 0;
@@ -54,7 +53,7 @@
             border: 1px solid var(--border-color);
             border-radius: 20px;
             padding: 24px 20px;
-            box-shadow: 0 0 30px rgba(13, 255, 117, 0.08);
+            box-shadow: 0 0 35px rgba(0, 255, 102, 0.15);
             animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -74,7 +73,7 @@
             border-radius: 20px;
             margin-bottom: 12px;
             border: 2px solid var(--accent-green);
-            box-shadow: 0 0 20px rgba(13, 255, 117, 0.4);
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.6);
             object-fit: cover;
             transition: transform 0.3s ease;
         }
@@ -86,7 +85,7 @@
         .header h1 {
             font-size: 1.8rem;
             color: var(--accent-green);
-            text-shadow: 0 0 10px rgba(13, 255, 117, 0.5);
+            text-shadow: 0 0 15px rgba(0, 255, 102, 0.7);
             letter-spacing: 2px;
             margin-bottom: 6px;
         }
@@ -107,6 +106,7 @@
             color: var(--accent-cyan);
             margin-bottom: 10px;
             font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
         }
 
         .dev-cards {
@@ -122,8 +122,8 @@
         }
 
         .dev-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             padding: 10px 12px;
             border-radius: 12px;
             display: flex;
@@ -134,8 +134,9 @@
         }
 
         .dev-card:hover {
-            border-color: rgba(13, 255, 117, 0.3);
-            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--accent-green);
+            box-shadow: 0 0 12px rgba(0, 255, 102, 0.3);
+            background: rgba(0, 255, 102, 0.05);
         }
 
         .dev-avatar-img {
@@ -144,11 +145,13 @@
             min-width: 32px;
             border-radius: 50%;
             border: 1.5px solid var(--accent-green);
+            box-shadow: 0 0 8px rgba(0, 255, 102, 0.5);
             object-fit: cover;
         }
 
         .dev-avatar-img.cyan {
             border-color: var(--accent-cyan);
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
         }
 
         .dev-name {
@@ -164,7 +167,7 @@
             margin-bottom: 20px;
         }
 
-        /* Стиль кнопок BookRa1n: глубокий градиент, скругленные углы и мягкое свечение */
+        /* Базовый неоновый стиль кнопок в стиле BookRa1n */
         .btn-style {
             display: flex;
             align-items: center;
@@ -172,8 +175,6 @@
             gap: 8px;
             width: 100%;
             padding: 13px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 12px;
             font-size: 0.88rem;
             font-weight: bold;
@@ -185,18 +186,23 @@
 
         .btn-style:hover {
             transform: translateY(-2px);
-            filter: brightness(1.2);
+            filter: brightness(1.25);
         }
 
         .btn-style:active {
             transform: translateY(1px) scale(0.99);
         }
 
+        /* Яркий Неон: Telegram */
         .btn-tg {
-            border-color: rgba(34, 158, 217, 0.5);
-            color: #53c7ff;
-            background: linear-gradient(180deg, rgba(34, 158, 217, 0.15) 0%, rgba(34, 158, 217, 0.03) 100%);
-            box-shadow: 0 0 12px rgba(34, 158, 217, 0.1);
+            border: 1px solid #00bfff;
+            color: #00e5ff;
+            background: linear-gradient(180deg, rgba(0, 191, 255, 0.25) 0%, rgba(0, 191, 255, 0.05) 100%);
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+        }
+        .btn-tg:hover {
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.6);
         }
 
         .managers-section {
@@ -209,28 +215,52 @@
             gap: 10px;
         }
 
+        /* Яркий Неон: Sileo */
         .btn-sileo {
-            border-color: rgba(0, 122, 255, 0.4);
-            color: #4da6ff;
-            background: linear-gradient(180deg, rgba(0, 122, 255, 0.12) 0%, rgba(0, 122, 255, 0.02) 100%);
+            border: 1px solid #007aff;
+            color: #3399ff;
+            background: linear-gradient(180deg, rgba(0, 122, 255, 0.25) 0%, rgba(0, 122, 255, 0.05) 100%);
+            box-shadow: 0 0 15px rgba(0, 122, 255, 0.3);
+            text-shadow: 0 0 8px rgba(51, 153, 255, 0.6);
+        }
+        .btn-sileo:hover {
+            box-shadow: 0 0 25px rgba(0, 122, 255, 0.6);
         }
 
+        /* Яркий Неон: Zebra */
         .btn-zebra {
-            border-color: rgba(255, 149, 0, 0.4);
-            color: #ffb347;
-            background: linear-gradient(180deg, rgba(255, 149, 0, 0.12) 0%, rgba(255, 149, 0, 0.02) 100%);
+            border: 1px solid #ff9500;
+            color: #ffaa00;
+            background: linear-gradient(180deg, rgba(255, 149, 0, 0.25) 0%, rgba(255, 149, 0, 0.05) 100%);
+            box-shadow: 0 0 15px rgba(255, 149, 0, 0.3);
+            text-shadow: 0 0 8px rgba(255, 170, 0, 0.6);
+        }
+        .btn-zebra:hover {
+            box-shadow: 0 0 25px rgba(255, 149, 0, 0.6);
         }
 
+        /* Яркий Неон: Cydia */
         .btn-cydia {
-            border-color: rgba(255, 59, 48, 0.4);
-            color: #ff6b6b;
-            background: linear-gradient(180deg, rgba(255, 59, 48, 0.12) 0%, rgba(255, 59, 48, 0.02) 100%);
+            border: 1px solid #ff2d55;
+            color: #ff4d6d;
+            background: linear-gradient(180deg, rgba(255, 45, 85, 0.25) 0%, rgba(255, 45, 85, 0.05) 100%);
+            box-shadow: 0 0 15px rgba(255, 45, 85, 0.3);
+            text-shadow: 0 0 8px rgba(255, 77, 109, 0.6);
+        }
+        .btn-cydia:hover {
+            box-shadow: 0 0 25px rgba(255, 45, 85, 0.6);
         }
 
+        /* Яркий Неон: Installer */
         .btn-installer {
-            border-color: rgba(255, 255, 255, 0.2);
-            color: #e6edf3;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid #00ff66;
+            color: #55ff99;
+            background: linear-gradient(180deg, rgba(0, 255, 102, 0.2) 0%, rgba(0, 255, 102, 0.04) 100%);
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
+            text-shadow: 0 0 8px rgba(0, 255, 102, 0.6);
+        }
+        .btn-installer:hover {
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.6);
         }
 
         .footer {
@@ -309,7 +339,6 @@
         height = canvas.height = window.innerHeight;
     });
 
-    // Настройки снега
     const flakes = Array.from({ length: 65 }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -319,7 +348,6 @@
         opacity: Math.random() * 0.5 + 0.2
     }));
 
-    // Звездочки за мышкой
     const stars = [];
 
     document.addEventListener('mousemove', (e) => {
@@ -331,7 +359,7 @@
                 vx: (Math.random() - 0.5) * 1.5,
                 vy: (Math.random() - 0.5) * 1.5 - 0.5,
                 alpha: 1,
-                color: Math.random() > 0.5 ? '#0dff75' : '#3bcbfb'
+                color: Math.random() > 0.5 ? '#00ff66' : '#00e5ff'
             });
         }
     });
@@ -339,7 +367,6 @@
     function render() {
         ctx.clearRect(0, 0, width, height);
 
-        // Рисуем медленный снег
         flakes.forEach(flake => {
             ctx.beginPath();
             ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
@@ -355,7 +382,6 @@
             }
         });
 
-        // Рисуем искры/звездочки курсора
         for (let i = stars.length - 1; i >= 0; i--) {
             const s = stars[i];
             ctx.beginPath();
