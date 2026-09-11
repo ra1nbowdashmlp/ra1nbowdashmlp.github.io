@@ -1,74 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ra1nbowdash Repo</title>
-    
-    <!-- Favicon & Apple Touch Icon -->
-    <link rel="icon" type="image/png" href="CydiaIcon.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
+    <title>Ra1nbow Repo</title>
     <style>
+        :root {
+            --bg-color: #0d0f12;
+            --card-bg: rgba(22, 27, 34, 0.75);
+            --accent-green: #00ff66;
+            --accent-cyan: #00e5ff;
+            --text-main: #e6edf3;
+            --text-dim: #8b949e;
+            --border-color: rgba(0, 255, 102, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-            background-color: #0f0f12;
-            color: #ffffff;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 255, 102, 0.1) 0%, transparent 70%),
+                linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8));
         }
+
         .container {
-            background: #1c1c1e;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            max-width: 320px;
+            max-width: 600px;
             width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.08);
+            animation: fadeIn 0.8s ease-out;
         }
-        .repo-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 18px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        h1 { margin: 0 0 8px 0; font-size: 24px; }
-        p { color: #8e8e93; font-size: 14px; margin-bottom: 24px; }
-        .btn {
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: var(--accent-green);
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .devs-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-cyan);
+            margin-bottom: 12px;
+        }
+
+        .dev-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .dev-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .dev-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .dev-avatar {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        .dev-name {
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .btn-add {
             display: block;
+            width: 100%;
+            text-align: center;
             padding: 14px;
-            margin: 10px 0;
-            border-radius: 12px;
+            background: rgba(0, 255, 102, 0.1);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            color: #fff;
-            transition: opacity 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.1);
         }
-        .btn:active { opacity: 0.7; }
-        .sileo { background: #337eff; }
-        .zebra { background: #1b1b1b; border: 1px solid #333; }
-        .cydia { background: #f38f2b; }
-        .installer { background: #13acac; }
+
+        .btn-add:hover {
+            background: var(--accent-green);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
+            transform: scale(1.02);
+        }
+
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Icon display on web page -->
-    <img src="CydiaIcon.png" alt="ra1nbowdash Repo Icon" class="repo-icon" onerror="this.style.display='none'">
+    <div class="header">
+        <h1>RA1NBOW REPO</h1>
+        <p>[ Private iOS Tweaks & Utilities ]</p>
+    </div>
 
-    <h1>ra1nbowdash Repo</h1>
-    <p>Choose your package manager to add this repository:</p>
+    <div class="devs-section">
+        <div class="section-title">> Developers</div>
+        <div class="dev-cards">
+            <div class="dev-card">
+                <div class="dev-avatar"></div>
+                <div class="dev-name">@ra1n_developer</div>
+            </div>
+            <div class="dev-card">
+                <div class="dev-avatar" style="background-color: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan);"></div>
+                <div class="dev-name">@Unnamed_200</div>
+            </div>
+        </div>
+    </div>
 
-    <a class="btn sileo" href="sileo://source/https://ra1nbowdashmlp.github.io/https-ra1nbowdashmlp.github.io-/">Add to Sileo</a>
-    <a class="btn zebra" href="zbra://sources/add/https://ra1nbowdashmlp.github.io/https-ra1nbowdashmlp.github.io-/">Add to Zebra</a>
-    <a class="btn cydia" href="cydia://url/https://cydia.saurik.com/api/share#?source=https://ra1nbowdashmlp.github.io/https-ra1nbowdashmlp.github.io-/">Add to Cydia</a>
-    <a class="btn installer" href="installer://add/https://ra1nbowdashmlp.github.io/https-ra1nbowdashmlp.github.io-/">Add to Installer</a>
+    <a href="sileo://source/https://ra1nbowdashmlp.github.io/" class="btn-add">
+        + ADD TO SILEO
+    </a>
+
+    <div class="footer">
+        STATUS: ONLINE | Cydia / Zebra / Sileo Compatible
+    </div>
 </div>
 
 </body>
